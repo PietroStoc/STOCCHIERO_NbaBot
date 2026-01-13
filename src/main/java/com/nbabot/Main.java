@@ -13,7 +13,6 @@ public class Main {
         System.out.println("Avvio NbaBot...");
 
         try {
-            // Carica configurazione
             Configurations configs = new Configurations();
             Configuration config = configs.properties(new File("config.properties"));
 
@@ -22,7 +21,7 @@ public class Main {
             String apiBaseUrl = config.getString("API_NBA_BASE_URL");
             String dbPath = config.getString("DB_PATH");
 
-            // Verifica configurazione
+
             if (botToken == null || botToken.equals("inserisci_qui_il_tuo_bot_token")) {
                 System.err.println("Errore: Bot token non configurato!");
                 System.err.println("Modifica il file config.properties con il tuo bot token.");
@@ -35,7 +34,6 @@ public class Main {
                 System.exit(1);
             }
 
-            // Inizializza componenti
             System.out.println("Inizializzazione database...");
             DatabaseManager database = new DatabaseManager(dbPath);
 
@@ -51,7 +49,6 @@ public class Main {
                 System.out.println("NbaBot avviato con successo!");
                 System.out.println("Premi CTRL+C per fermare il bot");
 
-                // Mantieni il processo attivo
                 Thread.currentThread().join();
             }
 
